@@ -1,14 +1,16 @@
+import os
 import requests
 
 from flask import (Flask, jsonify, request)
 from flask_cors import CORS
 
+
 app = Flask(__name__)
 CORS(app)
 
 
-# Horribly ghetto, but temporary
-TOKEN = 'eyJhbGciOiJSUzI1NiIsImtpZCI6IjV6VHRjR3lOZy1rRzgzZDdQbnRUaWE4TU9EeDNPVlM4dGpsWVNmbndhNTAifQ.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2NvdW50Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9uYW1lc3BhY2UiOiJkZWZhdWx0Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9zZWNyZXQubmFtZSI6IndvcHItdG9rZW4td3h3eHQiLCJrdWJlcm5ldGVzLmlvL3NlcnZpY2VhY2NvdW50L3NlcnZpY2UtYWNjb3VudC5uYW1lIjoid29wciIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VydmljZS1hY2NvdW50LnVpZCI6IjA2ODU2ZTUyLWQxNWQtNGU3NC05M2Y3LWExNzIyMzAyY2FkNCIsInN1YiI6InN5c3RlbTpzZXJ2aWNlYWNjb3VudDpkZWZhdWx0OndvcHIifQ.wm_c0ViJIi0cPvqms7kF8GxZOwhROTJgslI9fzeJN1BzUT-14ZQQNQFpSQAU8deF1jmwpkBsvxaf8lKlF3oBV3XdmzVZeDSQdCO8KZ1y-SUzTdF7rkI9vi0IPJfI9jEE-VAXY1FMdyKGz_OqwzitAXkFBWwSB1bmmzUWsHpX3qeh-ryg-A8fPBTBKolJK81WdVWAr0UBBleoA4XUIISqUDA4afdqrQYlv4a3FTlw-elqdsw5Wep979CE0wt7J-g92zgGfiddERl_nM8vHWZYR2neKCsDNBCy4eLCQQf0dXPBgxqSFPfRjR6P0L5mGrAa3NlmXCw-17kOy4Bo8gJ_kA'
+ENV_TOKEN = 'TOKEN'
+ENV_API = 'API'
 
 
 @app.route('/nodes', methods=['GET'])
@@ -69,9 +71,10 @@ def _merge_pods(nodes, pods, image_name):
 
 
 def _get(path):
-    url = 'https://192.168.99.100:8443/' + path
+
+    url = _api() + path
     headers = {
-        'Authorization': 'Bearer %s' % TOKEN
+        'Authorization': 'Bearer %s' % _token()
     }
 
     response = requests.get(url,
@@ -81,5 +84,16 @@ def _get(path):
     return data
 
 
+def _token():
+    return os.environ[ENV_TOKEN]
+
+
+def _api():
+    return os.environ[ENV_API]
+
+
 if __name__ == '__main__':
+    print('Connecting to cluster: %s' % _api())
+    print('Using token: %s' % _token())
+
     app.run(debug=True)
