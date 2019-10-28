@@ -3,9 +3,2067 @@
   "apiVersion": "v1",
   "metadata": {
     "selfLink": "/api/v1/pods",
-    "resourceVersion": "32736"
+    "resourceVersion": "38210"
   },
   "items": [
+    {
+      "metadata": {
+        "name": "sample-job-2fxqc",
+        "generateName": "sample-job-",
+        "namespace": "default",
+        "selfLink": "/api/v1/namespaces/default/pods/sample-job-2fxqc",
+        "uid": "b3012870-f993-11e9-aa3c-0a8c8675ab6d",
+        "resourceVersion": "38171",
+        "creationTimestamp": "2019-10-28T15:00:37Z",
+        "labels": {
+          "controller-uid": "a7a54335-f993-11e9-96fa-029f77d0433f",
+          "job-name": "sample-job"
+        },
+        "ownerReferences": [
+          {
+            "apiVersion": "batch/v1",
+            "kind": "Job",
+            "name": "sample-job",
+            "uid": "a7a54335-f993-11e9-96fa-029f77d0433f",
+            "controller": true,
+            "blockOwnerDeletion": true
+          }
+        ]
+      },
+      "spec": {
+        "volumes": [
+          {
+            "name": "default-token-66sgw",
+            "secret": {
+              "secretName": "default-token-66sgw",
+              "defaultMode": 420
+            }
+          }
+        ],
+        "containers": [
+          {
+            "name": "work",
+            "image": "busybox",
+            "command": [
+              "sleep",
+              "10"
+            ],
+            "resources": {
+              
+            },
+            "volumeMounts": [
+              {
+                "name": "default-token-66sgw",
+                "readOnly": true,
+                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount"
+              }
+            ],
+            "terminationMessagePath": "/dev/termination-log",
+            "terminationMessagePolicy": "File",
+            "imagePullPolicy": "Always"
+          }
+        ],
+        "restartPolicy": "Never",
+        "terminationGracePeriodSeconds": 30,
+        "dnsPolicy": "ClusterFirst",
+        "serviceAccountName": "default",
+        "serviceAccount": "default",
+        "nodeName": "ip-10-0-145-88.ec2.internal",
+        "securityContext": {
+          
+        },
+        "imagePullSecrets": [
+          {
+            "name": "default-dockercfg-bnvn6"
+          }
+        ],
+        "schedulerName": "default-scheduler",
+        "tolerations": [
+          {
+            "key": "node.kubernetes.io/unreachable",
+            "operator": "Exists",
+            "effect": "NoExecute",
+            "tolerationSeconds": 300
+          },
+          {
+            "key": "node.kubernetes.io/not-ready",
+            "operator": "Exists",
+            "effect": "NoExecute",
+            "tolerationSeconds": 300
+          }
+        ],
+        "priority": 0,
+        "enableServiceLinks": true
+      },
+      "status": {
+        "phase": "Pending",
+        "conditions": [
+          {
+            "type": "Initialized",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2019-10-28T15:00:37Z"
+          },
+          {
+            "type": "Ready",
+            "status": "False",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2019-10-28T15:00:37Z",
+            "reason": "ContainersNotReady",
+            "message": "containers with unready status: [work]"
+          },
+          {
+            "type": "ContainersReady",
+            "status": "False",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2019-10-28T15:00:37Z",
+            "reason": "ContainersNotReady",
+            "message": "containers with unready status: [work]"
+          },
+          {
+            "type": "PodScheduled",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2019-10-28T15:00:37Z"
+          }
+        ],
+        "hostIP": "10.0.145.88",
+        "startTime": "2019-10-28T15:00:37Z",
+        "containerStatuses": [
+          {
+            "name": "work",
+            "state": {
+              "waiting": {
+                "reason": "ContainerCreating"
+              }
+            },
+            "lastState": {
+              
+            },
+            "ready": false,
+            "restartCount": 0,
+            "image": "busybox",
+            "imageID": ""
+          }
+        ],
+        "qosClass": "BestEffort"
+      }
+    },
+    {
+      "metadata": {
+        "name": "sample-job-5bqlv",
+        "generateName": "sample-job-",
+        "namespace": "default",
+        "selfLink": "/api/v1/namespaces/default/pods/sample-job-5bqlv",
+        "uid": "b3059af8-f993-11e9-aa3c-0a8c8675ab6d",
+        "resourceVersion": "38181",
+        "creationTimestamp": "2019-10-28T15:00:37Z",
+        "labels": {
+          "controller-uid": "a7a54335-f993-11e9-96fa-029f77d0433f",
+          "job-name": "sample-job"
+        },
+        "ownerReferences": [
+          {
+            "apiVersion": "batch/v1",
+            "kind": "Job",
+            "name": "sample-job",
+            "uid": "a7a54335-f993-11e9-96fa-029f77d0433f",
+            "controller": true,
+            "blockOwnerDeletion": true
+          }
+        ]
+      },
+      "spec": {
+        "volumes": [
+          {
+            "name": "default-token-66sgw",
+            "secret": {
+              "secretName": "default-token-66sgw",
+              "defaultMode": 420
+            }
+          }
+        ],
+        "containers": [
+          {
+            "name": "work",
+            "image": "busybox",
+            "command": [
+              "sleep",
+              "10"
+            ],
+            "resources": {
+              
+            },
+            "volumeMounts": [
+              {
+                "name": "default-token-66sgw",
+                "readOnly": true,
+                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount"
+              }
+            ],
+            "terminationMessagePath": "/dev/termination-log",
+            "terminationMessagePolicy": "File",
+            "imagePullPolicy": "Always"
+          }
+        ],
+        "restartPolicy": "Never",
+        "terminationGracePeriodSeconds": 30,
+        "dnsPolicy": "ClusterFirst",
+        "serviceAccountName": "default",
+        "serviceAccount": "default",
+        "nodeName": "ip-10-0-138-149.ec2.internal",
+        "securityContext": {
+          
+        },
+        "imagePullSecrets": [
+          {
+            "name": "default-dockercfg-bnvn6"
+          }
+        ],
+        "schedulerName": "default-scheduler",
+        "tolerations": [
+          {
+            "key": "node.kubernetes.io/not-ready",
+            "operator": "Exists",
+            "effect": "NoExecute",
+            "tolerationSeconds": 300
+          },
+          {
+            "key": "node.kubernetes.io/unreachable",
+            "operator": "Exists",
+            "effect": "NoExecute",
+            "tolerationSeconds": 300
+          }
+        ],
+        "priority": 0,
+        "enableServiceLinks": true
+      },
+      "status": {
+        "phase": "Pending",
+        "conditions": [
+          {
+            "type": "Initialized",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2019-10-28T15:00:37Z"
+          },
+          {
+            "type": "Ready",
+            "status": "False",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2019-10-28T15:00:37Z",
+            "reason": "ContainersNotReady",
+            "message": "containers with unready status: [work]"
+          },
+          {
+            "type": "ContainersReady",
+            "status": "False",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2019-10-28T15:00:37Z",
+            "reason": "ContainersNotReady",
+            "message": "containers with unready status: [work]"
+          },
+          {
+            "type": "PodScheduled",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2019-10-28T15:00:37Z"
+          }
+        ],
+        "hostIP": "10.0.138.149",
+        "startTime": "2019-10-28T15:00:37Z",
+        "containerStatuses": [
+          {
+            "name": "work",
+            "state": {
+              "waiting": {
+                "reason": "ContainerCreating"
+              }
+            },
+            "lastState": {
+              
+            },
+            "ready": false,
+            "restartCount": 0,
+            "image": "busybox",
+            "imageID": ""
+          }
+        ],
+        "qosClass": "BestEffort"
+      }
+    },
+    {
+      "metadata": {
+        "name": "sample-job-5l99f",
+        "generateName": "sample-job-",
+        "namespace": "default",
+        "selfLink": "/api/v1/namespaces/default/pods/sample-job-5l99f",
+        "uid": "a7b344a9-f993-11e9-aa3c-0a8c8675ab6d",
+        "resourceVersion": "38148",
+        "creationTimestamp": "2019-10-28T15:00:18Z",
+        "labels": {
+          "controller-uid": "a7a54335-f993-11e9-96fa-029f77d0433f",
+          "job-name": "sample-job"
+        },
+        "annotations": {
+          "k8s.v1.cni.cncf.io/networks-status": ""
+        },
+        "ownerReferences": [
+          {
+            "apiVersion": "batch/v1",
+            "kind": "Job",
+            "name": "sample-job",
+            "uid": "a7a54335-f993-11e9-96fa-029f77d0433f",
+            "controller": true,
+            "blockOwnerDeletion": true
+          }
+        ]
+      },
+      "spec": {
+        "volumes": [
+          {
+            "name": "default-token-66sgw",
+            "secret": {
+              "secretName": "default-token-66sgw",
+              "defaultMode": 420
+            }
+          }
+        ],
+        "containers": [
+          {
+            "name": "work",
+            "image": "busybox",
+            "command": [
+              "sleep",
+              "10"
+            ],
+            "resources": {
+              
+            },
+            "volumeMounts": [
+              {
+                "name": "default-token-66sgw",
+                "readOnly": true,
+                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount"
+              }
+            ],
+            "terminationMessagePath": "/dev/termination-log",
+            "terminationMessagePolicy": "File",
+            "imagePullPolicy": "Always"
+          }
+        ],
+        "restartPolicy": "Never",
+        "terminationGracePeriodSeconds": 30,
+        "dnsPolicy": "ClusterFirst",
+        "serviceAccountName": "default",
+        "serviceAccount": "default",
+        "nodeName": "ip-10-0-138-149.ec2.internal",
+        "securityContext": {
+          
+        },
+        "imagePullSecrets": [
+          {
+            "name": "default-dockercfg-bnvn6"
+          }
+        ],
+        "schedulerName": "default-scheduler",
+        "tolerations": [
+          {
+            "key": "node.kubernetes.io/not-ready",
+            "operator": "Exists",
+            "effect": "NoExecute",
+            "tolerationSeconds": 300
+          },
+          {
+            "key": "node.kubernetes.io/unreachable",
+            "operator": "Exists",
+            "effect": "NoExecute",
+            "tolerationSeconds": 300
+          }
+        ],
+        "priority": 0,
+        "enableServiceLinks": true
+      },
+      "status": {
+        "phase": "Succeeded",
+        "conditions": [
+          {
+            "type": "Initialized",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2019-10-28T15:00:18Z",
+            "reason": "PodCompleted"
+          },
+          {
+            "type": "Ready",
+            "status": "False",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2019-10-28T15:00:36Z",
+            "reason": "PodCompleted"
+          },
+          {
+            "type": "ContainersReady",
+            "status": "False",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2019-10-28T15:00:36Z",
+            "reason": "PodCompleted"
+          },
+          {
+            "type": "PodScheduled",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2019-10-28T15:00:18Z"
+          }
+        ],
+        "hostIP": "10.0.138.149",
+        "podIP": "10.129.2.31",
+        "startTime": "2019-10-28T15:00:18Z",
+        "containerStatuses": [
+          {
+            "name": "work",
+            "state": {
+              "terminated": {
+                "exitCode": 0,
+                "reason": "Completed",
+                "startedAt": "2019-10-28T15:00:26Z",
+                "finishedAt": "2019-10-28T15:00:36Z",
+                "containerID": "cri-o://96c74039301c7c6db21991b2dbaac43fd9070f7051b63a734a3405af045854ca"
+              }
+            },
+            "lastState": {
+              
+            },
+            "ready": false,
+            "restartCount": 0,
+            "image": "docker.io/library/busybox:latest",
+            "imageID": "docker.io/library/busybox@sha256:dd97a3fe6d721c5cf03abac0f50e2848dc583f7c4e41bf39102ceb42edfd1808",
+            "containerID": "cri-o://96c74039301c7c6db21991b2dbaac43fd9070f7051b63a734a3405af045854ca"
+          }
+        ],
+        "qosClass": "BestEffort"
+      }
+    },
+    {
+      "metadata": {
+        "name": "sample-job-5xz8k",
+        "generateName": "sample-job-",
+        "namespace": "default",
+        "selfLink": "/api/v1/namespaces/default/pods/sample-job-5xz8k",
+        "uid": "b2a941e9-f993-11e9-aa3c-0a8c8675ab6d",
+        "resourceVersion": "38131",
+        "creationTimestamp": "2019-10-28T15:00:36Z",
+        "labels": {
+          "controller-uid": "a7a54335-f993-11e9-96fa-029f77d0433f",
+          "job-name": "sample-job"
+        },
+        "ownerReferences": [
+          {
+            "apiVersion": "batch/v1",
+            "kind": "Job",
+            "name": "sample-job",
+            "uid": "a7a54335-f993-11e9-96fa-029f77d0433f",
+            "controller": true,
+            "blockOwnerDeletion": true
+          }
+        ]
+      },
+      "spec": {
+        "volumes": [
+          {
+            "name": "default-token-66sgw",
+            "secret": {
+              "secretName": "default-token-66sgw",
+              "defaultMode": 420
+            }
+          }
+        ],
+        "containers": [
+          {
+            "name": "work",
+            "image": "busybox",
+            "command": [
+              "sleep",
+              "10"
+            ],
+            "resources": {
+              
+            },
+            "volumeMounts": [
+              {
+                "name": "default-token-66sgw",
+                "readOnly": true,
+                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount"
+              }
+            ],
+            "terminationMessagePath": "/dev/termination-log",
+            "terminationMessagePolicy": "File",
+            "imagePullPolicy": "Always"
+          }
+        ],
+        "restartPolicy": "Never",
+        "terminationGracePeriodSeconds": 30,
+        "dnsPolicy": "ClusterFirst",
+        "serviceAccountName": "default",
+        "serviceAccount": "default",
+        "nodeName": "ip-10-0-138-149.ec2.internal",
+        "securityContext": {
+          
+        },
+        "imagePullSecrets": [
+          {
+            "name": "default-dockercfg-bnvn6"
+          }
+        ],
+        "schedulerName": "default-scheduler",
+        "tolerations": [
+          {
+            "key": "node.kubernetes.io/not-ready",
+            "operator": "Exists",
+            "effect": "NoExecute",
+            "tolerationSeconds": 300
+          },
+          {
+            "key": "node.kubernetes.io/unreachable",
+            "operator": "Exists",
+            "effect": "NoExecute",
+            "tolerationSeconds": 300
+          }
+        ],
+        "priority": 0,
+        "enableServiceLinks": true
+      },
+      "status": {
+        "phase": "Pending",
+        "conditions": [
+          {
+            "type": "Initialized",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2019-10-28T15:00:36Z"
+          },
+          {
+            "type": "Ready",
+            "status": "False",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2019-10-28T15:00:36Z",
+            "reason": "ContainersNotReady",
+            "message": "containers with unready status: [work]"
+          },
+          {
+            "type": "ContainersReady",
+            "status": "False",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2019-10-28T15:00:36Z",
+            "reason": "ContainersNotReady",
+            "message": "containers with unready status: [work]"
+          },
+          {
+            "type": "PodScheduled",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2019-10-28T15:00:36Z"
+          }
+        ],
+        "hostIP": "10.0.138.149",
+        "startTime": "2019-10-28T15:00:36Z",
+        "containerStatuses": [
+          {
+            "name": "work",
+            "state": {
+              "waiting": {
+                "reason": "ContainerCreating"
+              }
+            },
+            "lastState": {
+              
+            },
+            "ready": false,
+            "restartCount": 0,
+            "image": "busybox",
+            "imageID": ""
+          }
+        ],
+        "qosClass": "BestEffort"
+      }
+    },
+    {
+      "metadata": {
+        "name": "sample-job-cvbhv",
+        "generateName": "sample-job-",
+        "namespace": "default",
+        "selfLink": "/api/v1/namespaces/default/pods/sample-job-cvbhv",
+        "uid": "a7b36f02-f993-11e9-aa3c-0a8c8675ab6d",
+        "resourceVersion": "38121",
+        "creationTimestamp": "2019-10-28T15:00:18Z",
+        "labels": {
+          "controller-uid": "a7a54335-f993-11e9-96fa-029f77d0433f",
+          "job-name": "sample-job"
+        },
+        "annotations": {
+          "k8s.v1.cni.cncf.io/networks-status": ""
+        },
+        "ownerReferences": [
+          {
+            "apiVersion": "batch/v1",
+            "kind": "Job",
+            "name": "sample-job",
+            "uid": "a7a54335-f993-11e9-96fa-029f77d0433f",
+            "controller": true,
+            "blockOwnerDeletion": true
+          }
+        ]
+      },
+      "spec": {
+        "volumes": [
+          {
+            "name": "default-token-66sgw",
+            "secret": {
+              "secretName": "default-token-66sgw",
+              "defaultMode": 420
+            }
+          }
+        ],
+        "containers": [
+          {
+            "name": "work",
+            "image": "busybox",
+            "command": [
+              "sleep",
+              "10"
+            ],
+            "resources": {
+              
+            },
+            "volumeMounts": [
+              {
+                "name": "default-token-66sgw",
+                "readOnly": true,
+                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount"
+              }
+            ],
+            "terminationMessagePath": "/dev/termination-log",
+            "terminationMessagePolicy": "File",
+            "imagePullPolicy": "Always"
+          }
+        ],
+        "restartPolicy": "Never",
+        "terminationGracePeriodSeconds": 30,
+        "dnsPolicy": "ClusterFirst",
+        "serviceAccountName": "default",
+        "serviceAccount": "default",
+        "nodeName": "ip-10-0-145-88.ec2.internal",
+        "securityContext": {
+          
+        },
+        "imagePullSecrets": [
+          {
+            "name": "default-dockercfg-bnvn6"
+          }
+        ],
+        "schedulerName": "default-scheduler",
+        "tolerations": [
+          {
+            "key": "node.kubernetes.io/not-ready",
+            "operator": "Exists",
+            "effect": "NoExecute",
+            "tolerationSeconds": 300
+          },
+          {
+            "key": "node.kubernetes.io/unreachable",
+            "operator": "Exists",
+            "effect": "NoExecute",
+            "tolerationSeconds": 300
+          }
+        ],
+        "priority": 0,
+        "enableServiceLinks": true
+      },
+      "status": {
+        "phase": "Succeeded",
+        "conditions": [
+          {
+            "type": "Initialized",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2019-10-28T15:00:18Z",
+            "reason": "PodCompleted"
+          },
+          {
+            "type": "Ready",
+            "status": "False",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2019-10-28T15:00:36Z",
+            "reason": "PodCompleted"
+          },
+          {
+            "type": "ContainersReady",
+            "status": "False",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2019-10-28T15:00:36Z",
+            "reason": "PodCompleted"
+          },
+          {
+            "type": "PodScheduled",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2019-10-28T15:00:18Z"
+          }
+        ],
+        "hostIP": "10.0.145.88",
+        "podIP": "10.128.2.20",
+        "startTime": "2019-10-28T15:00:18Z",
+        "containerStatuses": [
+          {
+            "name": "work",
+            "state": {
+              "terminated": {
+                "exitCode": 0,
+                "reason": "Completed",
+                "startedAt": "2019-10-28T15:00:26Z",
+                "finishedAt": "2019-10-28T15:00:36Z",
+                "containerID": "cri-o://270aec249a2ec6933584639f35ef252a1da89d34e7d723a0a5223e2e064847f3"
+              }
+            },
+            "lastState": {
+              
+            },
+            "ready": false,
+            "restartCount": 0,
+            "image": "docker.io/library/busybox:latest",
+            "imageID": "docker.io/library/busybox@sha256:dd97a3fe6d721c5cf03abac0f50e2848dc583f7c4e41bf39102ceb42edfd1808",
+            "containerID": "cri-o://270aec249a2ec6933584639f35ef252a1da89d34e7d723a0a5223e2e064847f3"
+          }
+        ],
+        "qosClass": "BestEffort"
+      }
+    },
+    {
+      "metadata": {
+        "name": "sample-job-fpgt6",
+        "generateName": "sample-job-",
+        "namespace": "default",
+        "selfLink": "/api/v1/namespaces/default/pods/sample-job-fpgt6",
+        "uid": "b2d034bd-f993-11e9-aa3c-0a8c8675ab6d",
+        "resourceVersion": "38161",
+        "creationTimestamp": "2019-10-28T15:00:36Z",
+        "labels": {
+          "controller-uid": "a7a54335-f993-11e9-96fa-029f77d0433f",
+          "job-name": "sample-job"
+        },
+        "ownerReferences": [
+          {
+            "apiVersion": "batch/v1",
+            "kind": "Job",
+            "name": "sample-job",
+            "uid": "a7a54335-f993-11e9-96fa-029f77d0433f",
+            "controller": true,
+            "blockOwnerDeletion": true
+          }
+        ]
+      },
+      "spec": {
+        "volumes": [
+          {
+            "name": "default-token-66sgw",
+            "secret": {
+              "secretName": "default-token-66sgw",
+              "defaultMode": 420
+            }
+          }
+        ],
+        "containers": [
+          {
+            "name": "work",
+            "image": "busybox",
+            "command": [
+              "sleep",
+              "10"
+            ],
+            "resources": {
+              
+            },
+            "volumeMounts": [
+              {
+                "name": "default-token-66sgw",
+                "readOnly": true,
+                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount"
+              }
+            ],
+            "terminationMessagePath": "/dev/termination-log",
+            "terminationMessagePolicy": "File",
+            "imagePullPolicy": "Always"
+          }
+        ],
+        "restartPolicy": "Never",
+        "terminationGracePeriodSeconds": 30,
+        "dnsPolicy": "ClusterFirst",
+        "serviceAccountName": "default",
+        "serviceAccount": "default",
+        "nodeName": "ip-10-0-138-149.ec2.internal",
+        "securityContext": {
+          
+        },
+        "imagePullSecrets": [
+          {
+            "name": "default-dockercfg-bnvn6"
+          }
+        ],
+        "schedulerName": "default-scheduler",
+        "tolerations": [
+          {
+            "key": "node.kubernetes.io/not-ready",
+            "operator": "Exists",
+            "effect": "NoExecute",
+            "tolerationSeconds": 300
+          },
+          {
+            "key": "node.kubernetes.io/unreachable",
+            "operator": "Exists",
+            "effect": "NoExecute",
+            "tolerationSeconds": 300
+          }
+        ],
+        "priority": 0,
+        "enableServiceLinks": true
+      },
+      "status": {
+        "phase": "Pending",
+        "conditions": [
+          {
+            "type": "Initialized",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2019-10-28T15:00:36Z"
+          },
+          {
+            "type": "Ready",
+            "status": "False",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2019-10-28T15:00:36Z",
+            "reason": "ContainersNotReady",
+            "message": "containers with unready status: [work]"
+          },
+          {
+            "type": "ContainersReady",
+            "status": "False",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2019-10-28T15:00:36Z",
+            "reason": "ContainersNotReady",
+            "message": "containers with unready status: [work]"
+          },
+          {
+            "type": "PodScheduled",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2019-10-28T15:00:36Z"
+          }
+        ],
+        "hostIP": "10.0.138.149",
+        "startTime": "2019-10-28T15:00:36Z",
+        "containerStatuses": [
+          {
+            "name": "work",
+            "state": {
+              "waiting": {
+                "reason": "ContainerCreating"
+              }
+            },
+            "lastState": {
+              
+            },
+            "ready": false,
+            "restartCount": 0,
+            "image": "busybox",
+            "imageID": ""
+          }
+        ],
+        "qosClass": "BestEffort"
+      }
+    },
+    {
+      "metadata": {
+        "name": "sample-job-g7bl8",
+        "generateName": "sample-job-",
+        "namespace": "default",
+        "selfLink": "/api/v1/namespaces/default/pods/sample-job-g7bl8",
+        "uid": "b2cc1911-f993-11e9-aa3c-0a8c8675ab6d",
+        "resourceVersion": "38147",
+        "creationTimestamp": "2019-10-28T15:00:36Z",
+        "labels": {
+          "controller-uid": "a7a54335-f993-11e9-96fa-029f77d0433f",
+          "job-name": "sample-job"
+        },
+        "ownerReferences": [
+          {
+            "apiVersion": "batch/v1",
+            "kind": "Job",
+            "name": "sample-job",
+            "uid": "a7a54335-f993-11e9-96fa-029f77d0433f",
+            "controller": true,
+            "blockOwnerDeletion": true
+          }
+        ]
+      },
+      "spec": {
+        "volumes": [
+          {
+            "name": "default-token-66sgw",
+            "secret": {
+              "secretName": "default-token-66sgw",
+              "defaultMode": 420
+            }
+          }
+        ],
+        "containers": [
+          {
+            "name": "work",
+            "image": "busybox",
+            "command": [
+              "sleep",
+              "10"
+            ],
+            "resources": {
+              
+            },
+            "volumeMounts": [
+              {
+                "name": "default-token-66sgw",
+                "readOnly": true,
+                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount"
+              }
+            ],
+            "terminationMessagePath": "/dev/termination-log",
+            "terminationMessagePolicy": "File",
+            "imagePullPolicy": "Always"
+          }
+        ],
+        "restartPolicy": "Never",
+        "terminationGracePeriodSeconds": 30,
+        "dnsPolicy": "ClusterFirst",
+        "serviceAccountName": "default",
+        "serviceAccount": "default",
+        "nodeName": "ip-10-0-145-88.ec2.internal",
+        "securityContext": {
+          
+        },
+        "imagePullSecrets": [
+          {
+            "name": "default-dockercfg-bnvn6"
+          }
+        ],
+        "schedulerName": "default-scheduler",
+        "tolerations": [
+          {
+            "key": "node.kubernetes.io/not-ready",
+            "operator": "Exists",
+            "effect": "NoExecute",
+            "tolerationSeconds": 300
+          },
+          {
+            "key": "node.kubernetes.io/unreachable",
+            "operator": "Exists",
+            "effect": "NoExecute",
+            "tolerationSeconds": 300
+          }
+        ],
+        "priority": 0,
+        "enableServiceLinks": true
+      },
+      "status": {
+        "phase": "Pending",
+        "conditions": [
+          {
+            "type": "Initialized",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2019-10-28T15:00:36Z"
+          },
+          {
+            "type": "Ready",
+            "status": "False",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2019-10-28T15:00:36Z",
+            "reason": "ContainersNotReady",
+            "message": "containers with unready status: [work]"
+          },
+          {
+            "type": "ContainersReady",
+            "status": "False",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2019-10-28T15:00:36Z",
+            "reason": "ContainersNotReady",
+            "message": "containers with unready status: [work]"
+          },
+          {
+            "type": "PodScheduled",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2019-10-28T15:00:36Z"
+          }
+        ],
+        "hostIP": "10.0.145.88",
+        "startTime": "2019-10-28T15:00:36Z",
+        "containerStatuses": [
+          {
+            "name": "work",
+            "state": {
+              "waiting": {
+                "reason": "ContainerCreating"
+              }
+            },
+            "lastState": {
+              
+            },
+            "ready": false,
+            "restartCount": 0,
+            "image": "busybox",
+            "imageID": ""
+          }
+        ],
+        "qosClass": "BestEffort"
+      }
+    },
+    {
+      "metadata": {
+        "name": "sample-job-gqsgl",
+        "generateName": "sample-job-",
+        "namespace": "default",
+        "selfLink": "/api/v1/namespaces/default/pods/sample-job-gqsgl",
+        "uid": "a7b3446d-f993-11e9-aa3c-0a8c8675ab6d",
+        "resourceVersion": "38122",
+        "creationTimestamp": "2019-10-28T15:00:18Z",
+        "labels": {
+          "controller-uid": "a7a54335-f993-11e9-96fa-029f77d0433f",
+          "job-name": "sample-job"
+        },
+        "annotations": {
+          "k8s.v1.cni.cncf.io/networks-status": ""
+        },
+        "ownerReferences": [
+          {
+            "apiVersion": "batch/v1",
+            "kind": "Job",
+            "name": "sample-job",
+            "uid": "a7a54335-f993-11e9-96fa-029f77d0433f",
+            "controller": true,
+            "blockOwnerDeletion": true
+          }
+        ]
+      },
+      "spec": {
+        "volumes": [
+          {
+            "name": "default-token-66sgw",
+            "secret": {
+              "secretName": "default-token-66sgw",
+              "defaultMode": 420
+            }
+          }
+        ],
+        "containers": [
+          {
+            "name": "work",
+            "image": "busybox",
+            "command": [
+              "sleep",
+              "10"
+            ],
+            "resources": {
+              
+            },
+            "volumeMounts": [
+              {
+                "name": "default-token-66sgw",
+                "readOnly": true,
+                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount"
+              }
+            ],
+            "terminationMessagePath": "/dev/termination-log",
+            "terminationMessagePolicy": "File",
+            "imagePullPolicy": "Always"
+          }
+        ],
+        "restartPolicy": "Never",
+        "terminationGracePeriodSeconds": 30,
+        "dnsPolicy": "ClusterFirst",
+        "serviceAccountName": "default",
+        "serviceAccount": "default",
+        "nodeName": "ip-10-0-145-88.ec2.internal",
+        "securityContext": {
+          
+        },
+        "imagePullSecrets": [
+          {
+            "name": "default-dockercfg-bnvn6"
+          }
+        ],
+        "schedulerName": "default-scheduler",
+        "tolerations": [
+          {
+            "key": "node.kubernetes.io/not-ready",
+            "operator": "Exists",
+            "effect": "NoExecute",
+            "tolerationSeconds": 300
+          },
+          {
+            "key": "node.kubernetes.io/unreachable",
+            "operator": "Exists",
+            "effect": "NoExecute",
+            "tolerationSeconds": 300
+          }
+        ],
+        "priority": 0,
+        "enableServiceLinks": true
+      },
+      "status": {
+        "phase": "Succeeded",
+        "conditions": [
+          {
+            "type": "Initialized",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2019-10-28T15:00:18Z",
+            "reason": "PodCompleted"
+          },
+          {
+            "type": "Ready",
+            "status": "False",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2019-10-28T15:00:36Z",
+            "reason": "PodCompleted"
+          },
+          {
+            "type": "ContainersReady",
+            "status": "False",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2019-10-28T15:00:36Z",
+            "reason": "PodCompleted"
+          },
+          {
+            "type": "PodScheduled",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2019-10-28T15:00:18Z"
+          }
+        ],
+        "hostIP": "10.0.145.88",
+        "podIP": "10.128.2.19",
+        "startTime": "2019-10-28T15:00:18Z",
+        "containerStatuses": [
+          {
+            "name": "work",
+            "state": {
+              "terminated": {
+                "exitCode": 0,
+                "reason": "Completed",
+                "startedAt": "2019-10-28T15:00:26Z",
+                "finishedAt": "2019-10-28T15:00:36Z",
+                "containerID": "cri-o://e923d887d15d9ae0a27fe97b57b6cc03a6d4ebe2051b0cd8010ca449a6968e90"
+              }
+            },
+            "lastState": {
+              
+            },
+            "ready": false,
+            "restartCount": 0,
+            "image": "docker.io/library/busybox:latest",
+            "imageID": "docker.io/library/busybox@sha256:dd97a3fe6d721c5cf03abac0f50e2848dc583f7c4e41bf39102ceb42edfd1808",
+            "containerID": "cri-o://e923d887d15d9ae0a27fe97b57b6cc03a6d4ebe2051b0cd8010ca449a6968e90"
+          }
+        ],
+        "qosClass": "BestEffort"
+      }
+    },
+    {
+      "metadata": {
+        "name": "sample-job-hzppq",
+        "generateName": "sample-job-",
+        "namespace": "default",
+        "selfLink": "/api/v1/namespaces/default/pods/sample-job-hzppq",
+        "uid": "a7b34ca0-f993-11e9-aa3c-0a8c8675ab6d",
+        "resourceVersion": "38172",
+        "creationTimestamp": "2019-10-28T15:00:18Z",
+        "labels": {
+          "controller-uid": "a7a54335-f993-11e9-96fa-029f77d0433f",
+          "job-name": "sample-job"
+        },
+        "annotations": {
+          "k8s.v1.cni.cncf.io/networks-status": ""
+        },
+        "ownerReferences": [
+          {
+            "apiVersion": "batch/v1",
+            "kind": "Job",
+            "name": "sample-job",
+            "uid": "a7a54335-f993-11e9-96fa-029f77d0433f",
+            "controller": true,
+            "blockOwnerDeletion": true
+          }
+        ]
+      },
+      "spec": {
+        "volumes": [
+          {
+            "name": "default-token-66sgw",
+            "secret": {
+              "secretName": "default-token-66sgw",
+              "defaultMode": 420
+            }
+          }
+        ],
+        "containers": [
+          {
+            "name": "work",
+            "image": "busybox",
+            "command": [
+              "sleep",
+              "10"
+            ],
+            "resources": {
+              
+            },
+            "volumeMounts": [
+              {
+                "name": "default-token-66sgw",
+                "readOnly": true,
+                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount"
+              }
+            ],
+            "terminationMessagePath": "/dev/termination-log",
+            "terminationMessagePolicy": "File",
+            "imagePullPolicy": "Always"
+          }
+        ],
+        "restartPolicy": "Never",
+        "terminationGracePeriodSeconds": 30,
+        "dnsPolicy": "ClusterFirst",
+        "serviceAccountName": "default",
+        "serviceAccount": "default",
+        "nodeName": "ip-10-0-165-39.ec2.internal",
+        "securityContext": {
+          
+        },
+        "imagePullSecrets": [
+          {
+            "name": "default-dockercfg-bnvn6"
+          }
+        ],
+        "schedulerName": "default-scheduler",
+        "tolerations": [
+          {
+            "key": "node.kubernetes.io/not-ready",
+            "operator": "Exists",
+            "effect": "NoExecute",
+            "tolerationSeconds": 300
+          },
+          {
+            "key": "node.kubernetes.io/unreachable",
+            "operator": "Exists",
+            "effect": "NoExecute",
+            "tolerationSeconds": 300
+          }
+        ],
+        "priority": 0,
+        "enableServiceLinks": true
+      },
+      "status": {
+        "phase": "Succeeded",
+        "conditions": [
+          {
+            "type": "Initialized",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2019-10-28T15:00:18Z",
+            "reason": "PodCompleted"
+          },
+          {
+            "type": "Ready",
+            "status": "False",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2019-10-28T15:00:37Z",
+            "reason": "PodCompleted"
+          },
+          {
+            "type": "ContainersReady",
+            "status": "False",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2019-10-28T15:00:37Z",
+            "reason": "PodCompleted"
+          },
+          {
+            "type": "PodScheduled",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2019-10-28T15:00:18Z"
+          }
+        ],
+        "hostIP": "10.0.165.39",
+        "podIP": "10.131.0.20",
+        "startTime": "2019-10-28T15:00:18Z",
+        "containerStatuses": [
+          {
+            "name": "work",
+            "state": {
+              "terminated": {
+                "exitCode": 0,
+                "reason": "Completed",
+                "startedAt": "2019-10-28T15:00:26Z",
+                "finishedAt": "2019-10-28T15:00:36Z",
+                "containerID": "cri-o://a7fdd8c5177cfd0a71a4201a261b3e9ba98d227454a8e5185ec8820a6c05624a"
+              }
+            },
+            "lastState": {
+              
+            },
+            "ready": false,
+            "restartCount": 0,
+            "image": "docker.io/library/busybox:latest",
+            "imageID": "docker.io/library/busybox@sha256:dd97a3fe6d721c5cf03abac0f50e2848dc583f7c4e41bf39102ceb42edfd1808",
+            "containerID": "cri-o://a7fdd8c5177cfd0a71a4201a261b3e9ba98d227454a8e5185ec8820a6c05624a"
+          }
+        ],
+        "qosClass": "BestEffort"
+      }
+    },
+    {
+      "metadata": {
+        "name": "sample-job-jrdst",
+        "generateName": "sample-job-",
+        "namespace": "default",
+        "selfLink": "/api/v1/namespaces/default/pods/sample-job-jrdst",
+        "uid": "b2b59426-f993-11e9-aa3c-0a8c8675ab6d",
+        "resourceVersion": "38135",
+        "creationTimestamp": "2019-10-28T15:00:36Z",
+        "labels": {
+          "controller-uid": "a7a54335-f993-11e9-96fa-029f77d0433f",
+          "job-name": "sample-job"
+        },
+        "ownerReferences": [
+          {
+            "apiVersion": "batch/v1",
+            "kind": "Job",
+            "name": "sample-job",
+            "uid": "a7a54335-f993-11e9-96fa-029f77d0433f",
+            "controller": true,
+            "blockOwnerDeletion": true
+          }
+        ]
+      },
+      "spec": {
+        "volumes": [
+          {
+            "name": "default-token-66sgw",
+            "secret": {
+              "secretName": "default-token-66sgw",
+              "defaultMode": 420
+            }
+          }
+        ],
+        "containers": [
+          {
+            "name": "work",
+            "image": "busybox",
+            "command": [
+              "sleep",
+              "10"
+            ],
+            "resources": {
+              
+            },
+            "volumeMounts": [
+              {
+                "name": "default-token-66sgw",
+                "readOnly": true,
+                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount"
+              }
+            ],
+            "terminationMessagePath": "/dev/termination-log",
+            "terminationMessagePolicy": "File",
+            "imagePullPolicy": "Always"
+          }
+        ],
+        "restartPolicy": "Never",
+        "terminationGracePeriodSeconds": 30,
+        "dnsPolicy": "ClusterFirst",
+        "serviceAccountName": "default",
+        "serviceAccount": "default",
+        "nodeName": "ip-10-0-165-39.ec2.internal",
+        "securityContext": {
+          
+        },
+        "imagePullSecrets": [
+          {
+            "name": "default-dockercfg-bnvn6"
+          }
+        ],
+        "schedulerName": "default-scheduler",
+        "tolerations": [
+          {
+            "key": "node.kubernetes.io/not-ready",
+            "operator": "Exists",
+            "effect": "NoExecute",
+            "tolerationSeconds": 300
+          },
+          {
+            "key": "node.kubernetes.io/unreachable",
+            "operator": "Exists",
+            "effect": "NoExecute",
+            "tolerationSeconds": 300
+          }
+        ],
+        "priority": 0,
+        "enableServiceLinks": true
+      },
+      "status": {
+        "phase": "Pending",
+        "conditions": [
+          {
+            "type": "Initialized",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2019-10-28T15:00:36Z"
+          },
+          {
+            "type": "Ready",
+            "status": "False",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2019-10-28T15:00:36Z",
+            "reason": "ContainersNotReady",
+            "message": "containers with unready status: [work]"
+          },
+          {
+            "type": "ContainersReady",
+            "status": "False",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2019-10-28T15:00:36Z",
+            "reason": "ContainersNotReady",
+            "message": "containers with unready status: [work]"
+          },
+          {
+            "type": "PodScheduled",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2019-10-28T15:00:36Z"
+          }
+        ],
+        "hostIP": "10.0.165.39",
+        "startTime": "2019-10-28T15:00:36Z",
+        "containerStatuses": [
+          {
+            "name": "work",
+            "state": {
+              "waiting": {
+                "reason": "ContainerCreating"
+              }
+            },
+            "lastState": {
+              
+            },
+            "ready": false,
+            "restartCount": 0,
+            "image": "busybox",
+            "imageID": ""
+          }
+        ],
+        "qosClass": "BestEffort"
+      }
+    },
+    {
+      "metadata": {
+        "name": "sample-job-pw9sw",
+        "generateName": "sample-job-",
+        "namespace": "default",
+        "selfLink": "/api/v1/namespaces/default/pods/sample-job-pw9sw",
+        "uid": "a7b2161c-f993-11e9-aa3c-0a8c8675ab6d",
+        "resourceVersion": "38144",
+        "creationTimestamp": "2019-10-28T15:00:18Z",
+        "labels": {
+          "controller-uid": "a7a54335-f993-11e9-96fa-029f77d0433f",
+          "job-name": "sample-job"
+        },
+        "annotations": {
+          "k8s.v1.cni.cncf.io/networks-status": "[{\n    \"name\": \"openshift-sdn\",\n    \"interface\": \"eth0\",\n    \"ips\": [\n        \"10.129.2.32\"\n    ],\n    \"default\": true,\n    \"dns\": {}\n}]"
+        },
+        "ownerReferences": [
+          {
+            "apiVersion": "batch/v1",
+            "kind": "Job",
+            "name": "sample-job",
+            "uid": "a7a54335-f993-11e9-96fa-029f77d0433f",
+            "controller": true,
+            "blockOwnerDeletion": true
+          }
+        ]
+      },
+      "spec": {
+        "volumes": [
+          {
+            "name": "default-token-66sgw",
+            "secret": {
+              "secretName": "default-token-66sgw",
+              "defaultMode": 420
+            }
+          }
+        ],
+        "containers": [
+          {
+            "name": "work",
+            "image": "busybox",
+            "command": [
+              "sleep",
+              "10"
+            ],
+            "resources": {
+              
+            },
+            "volumeMounts": [
+              {
+                "name": "default-token-66sgw",
+                "readOnly": true,
+                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount"
+              }
+            ],
+            "terminationMessagePath": "/dev/termination-log",
+            "terminationMessagePolicy": "File",
+            "imagePullPolicy": "Always"
+          }
+        ],
+        "restartPolicy": "Never",
+        "terminationGracePeriodSeconds": 30,
+        "dnsPolicy": "ClusterFirst",
+        "serviceAccountName": "default",
+        "serviceAccount": "default",
+        "nodeName": "ip-10-0-138-149.ec2.internal",
+        "securityContext": {
+          
+        },
+        "imagePullSecrets": [
+          {
+            "name": "default-dockercfg-bnvn6"
+          }
+        ],
+        "schedulerName": "default-scheduler",
+        "tolerations": [
+          {
+            "key": "node.kubernetes.io/not-ready",
+            "operator": "Exists",
+            "effect": "NoExecute",
+            "tolerationSeconds": 300
+          },
+          {
+            "key": "node.kubernetes.io/unreachable",
+            "operator": "Exists",
+            "effect": "NoExecute",
+            "tolerationSeconds": 300
+          }
+        ],
+        "priority": 0,
+        "enableServiceLinks": true
+      },
+      "status": {
+        "phase": "Succeeded",
+        "conditions": [
+          {
+            "type": "Initialized",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2019-10-28T15:00:18Z",
+            "reason": "PodCompleted"
+          },
+          {
+            "type": "Ready",
+            "status": "False",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2019-10-28T15:00:36Z",
+            "reason": "PodCompleted"
+          },
+          {
+            "type": "ContainersReady",
+            "status": "False",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2019-10-28T15:00:36Z",
+            "reason": "PodCompleted"
+          },
+          {
+            "type": "PodScheduled",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2019-10-28T15:00:18Z"
+          }
+        ],
+        "hostIP": "10.0.138.149",
+        "podIP": "10.129.2.32",
+        "startTime": "2019-10-28T15:00:18Z",
+        "containerStatuses": [
+          {
+            "name": "work",
+            "state": {
+              "terminated": {
+                "exitCode": 0,
+                "reason": "Completed",
+                "startedAt": "2019-10-28T15:00:26Z",
+                "finishedAt": "2019-10-28T15:00:36Z",
+                "containerID": "cri-o://df783db369c1e5c376a652448e13b6cf7a0232478ca4f26b87415adaee38ff2d"
+              }
+            },
+            "lastState": {
+              
+            },
+            "ready": false,
+            "restartCount": 0,
+            "image": "docker.io/library/busybox:latest",
+            "imageID": "docker.io/library/busybox@sha256:dd97a3fe6d721c5cf03abac0f50e2848dc583f7c4e41bf39102ceb42edfd1808",
+            "containerID": "cri-o://df783db369c1e5c376a652448e13b6cf7a0232478ca4f26b87415adaee38ff2d"
+          }
+        ],
+        "qosClass": "BestEffort"
+      }
+    },
+    {
+      "metadata": {
+        "name": "sample-job-q7xm8",
+        "generateName": "sample-job-",
+        "namespace": "default",
+        "selfLink": "/api/v1/namespaces/default/pods/sample-job-q7xm8",
+        "uid": "a7b20b88-f993-11e9-aa3c-0a8c8675ab6d",
+        "resourceVersion": "38145",
+        "creationTimestamp": "2019-10-28T15:00:18Z",
+        "labels": {
+          "controller-uid": "a7a54335-f993-11e9-96fa-029f77d0433f",
+          "job-name": "sample-job"
+        },
+        "annotations": {
+          "k8s.v1.cni.cncf.io/networks-status": ""
+        },
+        "ownerReferences": [
+          {
+            "apiVersion": "batch/v1",
+            "kind": "Job",
+            "name": "sample-job",
+            "uid": "a7a54335-f993-11e9-96fa-029f77d0433f",
+            "controller": true,
+            "blockOwnerDeletion": true
+          }
+        ]
+      },
+      "spec": {
+        "volumes": [
+          {
+            "name": "default-token-66sgw",
+            "secret": {
+              "secretName": "default-token-66sgw",
+              "defaultMode": 420
+            }
+          }
+        ],
+        "containers": [
+          {
+            "name": "work",
+            "image": "busybox",
+            "command": [
+              "sleep",
+              "10"
+            ],
+            "resources": {
+              
+            },
+            "volumeMounts": [
+              {
+                "name": "default-token-66sgw",
+                "readOnly": true,
+                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount"
+              }
+            ],
+            "terminationMessagePath": "/dev/termination-log",
+            "terminationMessagePolicy": "File",
+            "imagePullPolicy": "Always"
+          }
+        ],
+        "restartPolicy": "Never",
+        "terminationGracePeriodSeconds": 30,
+        "dnsPolicy": "ClusterFirst",
+        "serviceAccountName": "default",
+        "serviceAccount": "default",
+        "nodeName": "ip-10-0-138-149.ec2.internal",
+        "securityContext": {
+          
+        },
+        "imagePullSecrets": [
+          {
+            "name": "default-dockercfg-bnvn6"
+          }
+        ],
+        "schedulerName": "default-scheduler",
+        "tolerations": [
+          {
+            "key": "node.kubernetes.io/not-ready",
+            "operator": "Exists",
+            "effect": "NoExecute",
+            "tolerationSeconds": 300
+          },
+          {
+            "key": "node.kubernetes.io/unreachable",
+            "operator": "Exists",
+            "effect": "NoExecute",
+            "tolerationSeconds": 300
+          }
+        ],
+        "priority": 0,
+        "enableServiceLinks": true
+      },
+      "status": {
+        "phase": "Succeeded",
+        "conditions": [
+          {
+            "type": "Initialized",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2019-10-28T15:00:18Z",
+            "reason": "PodCompleted"
+          },
+          {
+            "type": "Ready",
+            "status": "False",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2019-10-28T15:00:36Z",
+            "reason": "PodCompleted"
+          },
+          {
+            "type": "ContainersReady",
+            "status": "False",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2019-10-28T15:00:36Z",
+            "reason": "PodCompleted"
+          },
+          {
+            "type": "PodScheduled",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2019-10-28T15:00:18Z"
+          }
+        ],
+        "hostIP": "10.0.138.149",
+        "podIP": "10.129.2.30",
+        "startTime": "2019-10-28T15:00:18Z",
+        "containerStatuses": [
+          {
+            "name": "work",
+            "state": {
+              "terminated": {
+                "exitCode": 0,
+                "reason": "Completed",
+                "startedAt": "2019-10-28T15:00:26Z",
+                "finishedAt": "2019-10-28T15:00:36Z",
+                "containerID": "cri-o://313e272cb55f255acc142d43801a656abc0834e7fb6de70f4867ce0330196fb1"
+              }
+            },
+            "lastState": {
+              
+            },
+            "ready": false,
+            "restartCount": 0,
+            "image": "docker.io/library/busybox:latest",
+            "imageID": "docker.io/library/busybox@sha256:dd97a3fe6d721c5cf03abac0f50e2848dc583f7c4e41bf39102ceb42edfd1808",
+            "containerID": "cri-o://313e272cb55f255acc142d43801a656abc0834e7fb6de70f4867ce0330196fb1"
+          }
+        ],
+        "qosClass": "BestEffort"
+      }
+    },
+    {
+      "metadata": {
+        "name": "sample-job-qsgp7",
+        "generateName": "sample-job-",
+        "namespace": "default",
+        "selfLink": "/api/v1/namespaces/default/pods/sample-job-qsgp7",
+        "uid": "a7a7767c-f993-11e9-aa3c-0a8c8675ab6d",
+        "resourceVersion": "38170",
+        "creationTimestamp": "2019-10-28T15:00:17Z",
+        "labels": {
+          "controller-uid": "a7a54335-f993-11e9-96fa-029f77d0433f",
+          "job-name": "sample-job"
+        },
+        "annotations": {
+          "k8s.v1.cni.cncf.io/networks-status": ""
+        },
+        "ownerReferences": [
+          {
+            "apiVersion": "batch/v1",
+            "kind": "Job",
+            "name": "sample-job",
+            "uid": "a7a54335-f993-11e9-96fa-029f77d0433f",
+            "controller": true,
+            "blockOwnerDeletion": true
+          }
+        ]
+      },
+      "spec": {
+        "volumes": [
+          {
+            "name": "default-token-66sgw",
+            "secret": {
+              "secretName": "default-token-66sgw",
+              "defaultMode": 420
+            }
+          }
+        ],
+        "containers": [
+          {
+            "name": "work",
+            "image": "busybox",
+            "command": [
+              "sleep",
+              "10"
+            ],
+            "resources": {
+              
+            },
+            "volumeMounts": [
+              {
+                "name": "default-token-66sgw",
+                "readOnly": true,
+                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount"
+              }
+            ],
+            "terminationMessagePath": "/dev/termination-log",
+            "terminationMessagePolicy": "File",
+            "imagePullPolicy": "Always"
+          }
+        ],
+        "restartPolicy": "Never",
+        "terminationGracePeriodSeconds": 30,
+        "dnsPolicy": "ClusterFirst",
+        "serviceAccountName": "default",
+        "serviceAccount": "default",
+        "nodeName": "ip-10-0-165-39.ec2.internal",
+        "securityContext": {
+          
+        },
+        "imagePullSecrets": [
+          {
+            "name": "default-dockercfg-bnvn6"
+          }
+        ],
+        "schedulerName": "default-scheduler",
+        "tolerations": [
+          {
+            "key": "node.kubernetes.io/not-ready",
+            "operator": "Exists",
+            "effect": "NoExecute",
+            "tolerationSeconds": 300
+          },
+          {
+            "key": "node.kubernetes.io/unreachable",
+            "operator": "Exists",
+            "effect": "NoExecute",
+            "tolerationSeconds": 300
+          }
+        ],
+        "priority": 0,
+        "enableServiceLinks": true
+      },
+      "status": {
+        "phase": "Succeeded",
+        "conditions": [
+          {
+            "type": "Initialized",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2019-10-28T15:00:18Z",
+            "reason": "PodCompleted"
+          },
+          {
+            "type": "Ready",
+            "status": "False",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2019-10-28T15:00:37Z",
+            "reason": "PodCompleted"
+          },
+          {
+            "type": "ContainersReady",
+            "status": "False",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2019-10-28T15:00:37Z",
+            "reason": "PodCompleted"
+          },
+          {
+            "type": "PodScheduled",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2019-10-28T15:00:18Z"
+          }
+        ],
+        "hostIP": "10.0.165.39",
+        "podIP": "10.131.0.21",
+        "startTime": "2019-10-28T15:00:18Z",
+        "containerStatuses": [
+          {
+            "name": "work",
+            "state": {
+              "terminated": {
+                "exitCode": 0,
+                "reason": "Completed",
+                "startedAt": "2019-10-28T15:00:26Z",
+                "finishedAt": "2019-10-28T15:00:36Z",
+                "containerID": "cri-o://63a0f6fb6c16251ec1c63b24a72a24a311b01e9ff84d51a7e616ac03e0ee7299"
+              }
+            },
+            "lastState": {
+              
+            },
+            "ready": false,
+            "restartCount": 0,
+            "image": "docker.io/library/busybox:latest",
+            "imageID": "docker.io/library/busybox@sha256:dd97a3fe6d721c5cf03abac0f50e2848dc583f7c4e41bf39102ceb42edfd1808",
+            "containerID": "cri-o://63a0f6fb6c16251ec1c63b24a72a24a311b01e9ff84d51a7e616ac03e0ee7299"
+          }
+        ],
+        "qosClass": "BestEffort"
+      }
+    },
+    {
+      "metadata": {
+        "name": "sample-job-rbgtl",
+        "generateName": "sample-job-",
+        "namespace": "default",
+        "selfLink": "/api/v1/namespaces/default/pods/sample-job-rbgtl",
+        "uid": "b2d37516-f993-11e9-aa3c-0a8c8675ab6d",
+        "resourceVersion": "38158",
+        "creationTimestamp": "2019-10-28T15:00:36Z",
+        "labels": {
+          "controller-uid": "a7a54335-f993-11e9-96fa-029f77d0433f",
+          "job-name": "sample-job"
+        },
+        "ownerReferences": [
+          {
+            "apiVersion": "batch/v1",
+            "kind": "Job",
+            "name": "sample-job",
+            "uid": "a7a54335-f993-11e9-96fa-029f77d0433f",
+            "controller": true,
+            "blockOwnerDeletion": true
+          }
+        ]
+      },
+      "spec": {
+        "volumes": [
+          {
+            "name": "default-token-66sgw",
+            "secret": {
+              "secretName": "default-token-66sgw",
+              "defaultMode": 420
+            }
+          }
+        ],
+        "containers": [
+          {
+            "name": "work",
+            "image": "busybox",
+            "command": [
+              "sleep",
+              "10"
+            ],
+            "resources": {
+              
+            },
+            "volumeMounts": [
+              {
+                "name": "default-token-66sgw",
+                "readOnly": true,
+                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount"
+              }
+            ],
+            "terminationMessagePath": "/dev/termination-log",
+            "terminationMessagePolicy": "File",
+            "imagePullPolicy": "Always"
+          }
+        ],
+        "restartPolicy": "Never",
+        "terminationGracePeriodSeconds": 30,
+        "dnsPolicy": "ClusterFirst",
+        "serviceAccountName": "default",
+        "serviceAccount": "default",
+        "nodeName": "ip-10-0-165-39.ec2.internal",
+        "securityContext": {
+          
+        },
+        "imagePullSecrets": [
+          {
+            "name": "default-dockercfg-bnvn6"
+          }
+        ],
+        "schedulerName": "default-scheduler",
+        "tolerations": [
+          {
+            "key": "node.kubernetes.io/not-ready",
+            "operator": "Exists",
+            "effect": "NoExecute",
+            "tolerationSeconds": 300
+          },
+          {
+            "key": "node.kubernetes.io/unreachable",
+            "operator": "Exists",
+            "effect": "NoExecute",
+            "tolerationSeconds": 300
+          }
+        ],
+        "priority": 0,
+        "enableServiceLinks": true
+      },
+      "status": {
+        "phase": "Pending",
+        "conditions": [
+          {
+            "type": "Initialized",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2019-10-28T15:00:36Z"
+          },
+          {
+            "type": "Ready",
+            "status": "False",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2019-10-28T15:00:36Z",
+            "reason": "ContainersNotReady",
+            "message": "containers with unready status: [work]"
+          },
+          {
+            "type": "ContainersReady",
+            "status": "False",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2019-10-28T15:00:36Z",
+            "reason": "ContainersNotReady",
+            "message": "containers with unready status: [work]"
+          },
+          {
+            "type": "PodScheduled",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2019-10-28T15:00:36Z"
+          }
+        ],
+        "hostIP": "10.0.165.39",
+        "startTime": "2019-10-28T15:00:36Z",
+        "containerStatuses": [
+          {
+            "name": "work",
+            "state": {
+              "waiting": {
+                "reason": "ContainerCreating"
+              }
+            },
+            "lastState": {
+              
+            },
+            "ready": false,
+            "restartCount": 0,
+            "image": "busybox",
+            "imageID": ""
+          }
+        ],
+        "qosClass": "BestEffort"
+      }
+    },
     {
       "metadata": {
         "name": "openshift-apiserver-operator-9bcf9dc8-ncpjf",
