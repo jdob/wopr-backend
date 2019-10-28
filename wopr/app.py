@@ -29,11 +29,19 @@ def all_nodes():
 
 
 def _parse_node_data(data):
-
     nodes = []
     for node_data in data['items']:
-        s = node_data['status']
 
+        # Determine the node's role (worker or master)
+        for l in node_data['metadata']['labels']:
+            if l.startswith('node-role'):
+                node_role = l
+
+        # Only process worker nodes
+        if node_role != 'node-role.kubernetes.io/worker':
+            continue
+
+        s = node_data['status']
         n = {
             'name': node_data['metadata']['name'],
             'os': s['nodeInfo']['operatingSystem'],
@@ -42,11 +50,11 @@ def _parse_node_data(data):
                 'cpu': s['capacity']['cpu'],
                 'pods': s['capacity']['pods'],
             },
+            'role': node_role,
             'pods': [],
         }
 
         for addy in s['addresses']:
-            print(addy)
             if addy['type'] == 'InternalIP':
                 n['ip'] = addy['address']
 
@@ -67,11 +75,13 @@ def _merge_pods(nodes, pods, image_name):
 
         if image_name is None or image_name in p['image']:
             node_name = pod['spec']['nodeName']
-            nodes_by_name[node_name]['pods'].append(p)
+
+            # Ignore pods not in the filtered set of nodes
+            if node_name in nodes_by_name:
+                nodes_by_name[node_name]['pods'].append(p)
 
 
 def _get(path):
-
     url = _api() + path
     headers = {
         'Authorization': 'Bearer %s' % _token()
