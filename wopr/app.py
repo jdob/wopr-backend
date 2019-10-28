@@ -4,6 +4,15 @@ import requests
 from flask import (Flask, jsonify, request)
 from flask_cors import CORS
 
+# Suppress the insecure warnings
+import urllib3
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
+
+# Suppress chatty flask logging
+import logging
+log = logging.getLogger('werkzeug')
+log.setLevel(logging.ERROR)
+
 
 app = Flask(__name__)
 CORS(app)
@@ -107,6 +116,11 @@ class Wopr(object):
                 'image': pod['spec']['containers'][0]['image'],
                 'phase': pod['status']['phase'],
             }
+
+            # Not sure what's causing this situation, but don't let
+            # the API crash if it happens
+            if 'nodeName' not in pod['spec']:
+                continue
             node_name = pod['spec']['nodeName']
 
             # If there is an image filter, make sure the specified image
@@ -122,6 +136,25 @@ class Wopr(object):
             # Check to see if completed pods are filtered out
             if self.hide_succeeded and p['phase'] == 'Succeeded':
                 continue
+
+            # This is ugly, but there's a small race condition where
+            # the pods are on a node but the node list doesn't show the node
+            # yet.
+            if node_name not in nodes_by_name:
+                n = {
+                    'name': node_name,
+                    'os': 'Unknown',
+                    'arch': 'Unknown',
+                    'capacity': {
+                        'cpu': 'Unknown',
+                        'pods': 'Unknown',
+                    },
+                    'role': 'node-role.kubernetes.io/worker',
+                    'ip': 'Unknown',
+                    'pods': [],
+                }
+                nodes.append(n)
+                nodes_by_name[node_name] = n
 
             nodes_by_name[node_name]['pods'].append(p)
 
