@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  generateName: fake-
+spec:
+  containers:
+  - name: work
+    image: busybox
+    command: ["sleep",  "10"]
+  restartPolicy: Never
