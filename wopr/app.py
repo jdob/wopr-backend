@@ -11,14 +11,18 @@ CORS(app)
 
 ENV_TOKEN = 'TOKEN'
 ENV_API = 'API'
+ENV_IMAGE_FILTER = 'IMAGE_FILTER'
+ENV_HIDE_SUCCEEDED = 'HIDE_SUCCEEDED'
 
 WOPR = None
 
 
 @app.route('/nodes', methods=['GET'])
 def all_nodes():
-    image_name = request.args.get('image', None)
-    all_nodes = WOPR.get_nodes(image_name=image_name)
+    # Temporarily disabling this as a query parameter
+    # image_name = request.args.get('image', None)
+
+    all_nodes = WOPR.get_nodes()
     return jsonify({'nodes': all_nodes})
 
 
@@ -27,15 +31,25 @@ class Wopr(object):
     def __init__(self):
         self.token = os.environ[ENV_TOKEN]
         self.api_host = os.environ[ENV_API]
+        self.image_filter = os.environ.get(ENV_IMAGE_FILTER, None)
+        self.hide_succeeded = os.environ.get(ENV_HIDE_SUCCEEDED, False)
 
-    def get_nodes(self, image_name = None):
+    def print_status(self):
+        print('==================================')
+        print('Host:           %s' % self.api_host)
+        print('Image:          %s' % self.image_filter)
+        print('Hide Succeeded: %s' % self.hide_succeeded)
+        print('Token:          %s' % (self.token != None))
+        print('==================================')
+
+    def get_nodes(self):
         # Load all of the nodes
         nodes = self._get('api/v1/nodes')
         all_nodes = self._parse_node_data(nodes)
 
         # Load all of the pods
         pods = self._get('api/v1/pods')
-        self._merge_pods(all_nodes, pods, image_name)
+        self._merge_pods(all_nodes, pods)
 
         # Sort the list of pods in each node
         for n in all_nodes:
@@ -79,8 +93,7 @@ class Wopr(object):
 
         return nodes
 
-    @staticmethod
-    def _merge_pods(nodes, pods, image_name):
+    def _merge_pods(self, nodes, pods):
 
         # Build lookup for nodes
         nodes_by_name = {}
@@ -94,14 +107,23 @@ class Wopr(object):
                 'image': pod['spec']['containers'][0]['image'],
                 'phase': pod['status']['phase'],
             }
+            node_name = pod['spec']['nodeName']
 
-            # If there is an image filter, make sure the pod matches
-            if image_name is None or image_name in p['image']:
-                node_name = pod['spec']['nodeName']
+            # If there is an image filter, make sure the specified image
+            # string is present in the pod's image name
+            if self.image_filter is not None and \
+               self.image_filter not in p['image']:
+                continue
 
-                # Ignore pods not in the filtered set of nodes
-                if node_name in nodes_by_name:
-                    nodes_by_name[node_name]['pods'].append(p)
+            # Ignore pods not in the filtered  set of nodes
+            if node_name not in nodes_by_name:
+                continue
+
+            # Check to see if completed pods are filtered out
+            if self.hide_succeeded and p['phase'] == 'Succeeded':
+                continue
+
+            nodes_by_name[node_name]['pods'].append(p)
 
     @staticmethod
     def _sort_pods(pods):
@@ -126,8 +148,6 @@ class Wopr(object):
 if __name__ == '__main__':
 
     WOPR = Wopr()
-
-    print('Connecting to cluster: %s' % WOPR.api_host)
-    print('Using token: %s' % WOPR.token)
+    WOPR.print_status()
 
     app.run(debug=True)
