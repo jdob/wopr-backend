@@ -1,0 +1,16 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: sample-job
+  generateName: fake-
+spec:
+  template:
+    spec:
+      containers:
+      - name: work
+        image: busybox
+        command: ["sleep",  "10"]
+      restartPolicy: Never
+  backoffLimit: 4
+  completions: 50
+  parallelism: 7
