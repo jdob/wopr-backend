@@ -37,6 +37,10 @@ class Wopr(object):
         pods = self._get('api/v1/pods')
         self._merge_pods(all_nodes, pods, image_name)
 
+        # Sort the list of pods in each node
+        for n in all_nodes:
+            self._sort_pods(n['pods'])
+
         return all_nodes
 
     def _parse_node_data(self, data):
@@ -99,6 +103,14 @@ class Wopr(object):
                 if node_name in nodes_by_name:
                     nodes_by_name[node_name]['pods'].append(p)
 
+    @staticmethod
+    def _sort_pods(pods):
+        # The order should be Pending, Running, Succeeded
+        # (which luckily is alphabetical)
+        def sort_by_phase(p):
+            return p['phase']
+
+        pods.sort(key = sort_by_phase)
 
     def _get(self, path):
         url = self.api_host + path
