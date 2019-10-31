@@ -23,6 +23,9 @@ ENV_API = 'API'
 ENV_IMAGE_FILTER = 'IMAGE_FILTER'
 ENV_HIDE_SUCCEEDED = 'HIDE_SUCCEEDED'
 
+# Name of the holder for all pending pods that don't have a node yet
+UNSCHEDULED = 'Unscheduled'
+
 WOPR = None
 
 
@@ -100,6 +103,16 @@ class Wopr(object):
 
             nodes.append(n)
 
+        # Add a holder for unscheduled nodes
+        n = {
+            'name': UNSCHEDULED,
+            'os': '',
+            'arch': '',
+            'ip': '',
+            'pods': [],
+        }
+        nodes.append(n)
+
         return nodes
 
     def _merge_pods(self, nodes, pods):
@@ -117,11 +130,11 @@ class Wopr(object):
                 'phase': pod['status']['phase'],
             }
 
-            # Not sure what's causing this situation, but don't let
-            # the API crash if it happens
+            # For pending pods that don't have a viable node, this will be empty
             if 'nodeName' not in pod['spec']:
-                continue
-            node_name = pod['spec']['nodeName']
+                node_name = UNSCHEDULED
+            else:
+                node_name = pod['spec']['nodeName']
 
             # If there is an image filter, make sure the specified image
             # string is present in the pod's image name
