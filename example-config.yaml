@@ -1,0 +1,5 @@
+api: https://192.168.99.100:8443/
+token: abcdef...
+image_filter: busybox
+hide_succeeded: true
+filter_worker_nodes: false
