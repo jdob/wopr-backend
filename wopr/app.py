@@ -1,5 +1,8 @@
+import argparse
 import os
 import requests
+import sys
+import yaml
 
 from flask import (Flask, jsonify, request)
 from flask_cors import CORS
@@ -41,12 +44,27 @@ def all_nodes():
 
 class Wopr(object):
 
-    def __init__(self):
+    def __init__(self, config_filepath):
         self.token = os.environ[ENV_TOKEN]
         self.api_host = os.environ[ENV_API]
         self.image_filter = os.environ.get(ENV_IMAGE_FILTER, None)
         self.hide_succeeded = os.environ.get(ENV_HIDE_SUCCEEDED, False)
         self.filter_worker_nodes = os.environ.get(ENV_FILTER_WORKER_NODES, False)
+
+        self.load_config(config_filepath)
+
+    def load_config(self, filepath):
+        if not filepath:
+            return
+
+        with open(filepath, 'r') as stream:
+            c = yaml.safe_load(stream)
+
+            self.token = c.get(ENV_TOKEN.lower(), self.token)
+            self.api_host = c.get(ENV_API.lower(), self.api_host)
+            self.image_filter = c.get(ENV_IMAGE_FILTER.lower(), self.image_filter)
+            self.hide_succeeded = c.get(ENV_HIDE_SUCCEEDED.lower(), self.hide_succeeded)
+            self.filter_worker_nodes = c.get(ENV_FILTER_WORKER_NODES.lower(), self.filter_worker_nodes)
 
     def print_status(self):
         print('==================================')
@@ -194,9 +212,25 @@ class Wopr(object):
         return data
 
 
+def parse_args(args):
+    parser = argparse.ArgumentParser(
+        description='Command line interface to the WOPR Backend',
+        add_help=False
+    )
+
+    parser.add_argument('-c', '--config',
+                        dest='config',
+                        action='store',
+                        help='path to the configuration file to use')
+
+    return parser.parse_args(args)
+
+
 if __name__ == '__main__':
 
-    WOPR = Wopr()
+    parsed = parse_args(sys.argv[1:])
+
+    WOPR = Wopr(parsed.config)
     WOPR.print_status()
 
     app.run(debug=True)
