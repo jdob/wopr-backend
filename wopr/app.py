@@ -22,6 +22,7 @@ ENV_TOKEN = 'TOKEN'
 ENV_API = 'API'
 ENV_IMAGE_FILTER = 'IMAGE_FILTER'
 ENV_HIDE_SUCCEEDED = 'HIDE_SUCCEEDED'
+ENV_FILTER_WORKER_NODES = 'FILTER_WORKER_NODES'
 
 # Name of the holder for all pending pods that don't have a node yet
 UNSCHEDULED = 'Unscheduled'
@@ -45,12 +46,14 @@ class Wopr(object):
         self.api_host = os.environ[ENV_API]
         self.image_filter = os.environ.get(ENV_IMAGE_FILTER, None)
         self.hide_succeeded = os.environ.get(ENV_HIDE_SUCCEEDED, False)
+        self.filter_worker_nodes = os.environ.get(ENV_FILTER_WORKER_NODES, False)
 
     def print_status(self):
         print('==================================')
         print('Host:           %s' % self.api_host)
         print('Image:          %s' % self.image_filter)
         print('Hide Succeeded: %s' % self.hide_succeeded)
+        print('Filter Workers: %s' % self.filter_worker_nodes)
         print('Token:          %s' % (self.token != None))
         print('==================================')
 
@@ -80,7 +83,7 @@ class Wopr(object):
                     break
 
             # Only process worker nodes
-            if node_role != 'node-role.kubernetes.io/worker':
+            if self.filter_worker_nodes and node_role != 'node-role.kubernetes.io/worker':
                 continue
 
             # Build up the node details
